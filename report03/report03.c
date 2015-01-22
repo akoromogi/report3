@@ -41,7 +41,6 @@ int main(){
 		// はしでないところ
 		for(j = 1; j < HEIGHT - 1; j++){
 			edged = 0;
-			// 線形フィルタの適用
 			for(ii = 0; ii < 3; ii++){
 				for(jj = 0; jj < 3; jj++){
 				}
