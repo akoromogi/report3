@@ -1,0 +1,31 @@
+﻿2014/01/30 13:01:35 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\1223066\Desktop\画像情報処理\report03\report03\report03.vcxproj" (build ターゲット)。
+     1>InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "Debug\report03.unsuccessfulbuild" を作成しています。
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt report03.c
+         report03.c
+     1>c:\users\1223066\desktop\画像情報処理\report03\report03\report03.c(35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 'fopen' の宣言を確認してください。
+     1>c:\users\1223066\desktop\画像情報処理\report03\report03\report03.c(73): warning C4244: '=' : 'double' から 'unsigned char' への変換です。データが失われる可能性があります。
+     1>c:\users\1223066\desktop\画像情報処理\report03\report03\report03.c(91): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : 'fopen' の宣言を確認してください。
+       ManifestResourceCompile:
+         すべての出力が最新のものです。
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\1223066\Desktop\画像情報処理\report03\Debug\report03.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\report03.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\1223066\Desktop\画像情報処理\report03\Debug\report03.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\1223066\Desktop\画像情報処理\report03\Debug\report03.lib" /MACHINE:X86 Debug\report03.exe.embed.manifest.res
+         Debug\report03.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\report03.exe.embed.manifest" /manifest Debug\report03.exe.intermediate.manifest
+         すべての出力が最新のものです。
+       LinkEmbedManifest:
+         すべての出力が最新のものです。
+         report03.vcxproj -> C:\Users\1223066\Desktop\画像情報処理\report03\Debug\report03.exe
+       FinalizeBuildStatus:
+         ファイル "Debug\report03.unsuccessfulbuild" を削除しています。
+         "Debug\report03.lastbuildstate" のタッチ タスクを実行しています。
+     1>プロジェクト "C:\Users\1223066\Desktop\画像情報処理\report03\report03\report03.vcxproj" (build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:01.54
