@@ -12,9 +12,7 @@ typedef struct color{
 } COLOR;
 
 COLOR data1[WIDTH][HEIGHT];
-unsigned char data2[WIDTH][HEIGHT] = { 0 };
-unsigned char data3[WIDTH][HEIGHT] = { 0 };
-unsigned char data4[WIDTH][HEIGHT] = { 0 };
+unsigned char data2[WIDTH][HEIGHT] = { 0 };	// 必要に応じて連番増やすのわんちゃん
 double filter[3][3] = {{ 1, 1, 1 },
 						{ 1, 1, 1 },
 						{ 1, 1, 1 }};
