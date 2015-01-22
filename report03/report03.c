@@ -1,6 +1,6 @@
-#define WIDTH 640
-#define HEIGHT 480
-#define THRESHOLD 75
+#define WIDTH 3939
+#define HEIGHT 2786
+#define THRESHOLD 128
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,93 +11,62 @@ typedef struct color{
 	unsigned char b;
 } COLOR;
 
-// ƒJƒ‰[ƒf[ƒ^
 COLOR data1[WIDTH][HEIGHT];
-// ƒOƒŒ[ƒXƒP[ƒ‹ƒf[ƒ^
 unsigned char data2[WIDTH][HEIGHT] = { 0 };
-// ƒGƒbƒW’Šoƒf[ƒ^
 unsigned char data3[WIDTH][HEIGHT] = { 0 };
-// 2’l‰»ƒf[ƒ^
 unsigned char data4[WIDTH][HEIGHT] = { 0 };
-// üŒ`ƒtƒBƒ‹ƒ^
 double filter[3][3] = {{ 1, 1, 1 },
-						{ 1, -8, 1 },
+						{ 1, 1, 1 },
 						{ 1, 1, 1 }};
 
 int main(){
 	int i, j, ii, jj;
 	double edged;
-	FILE *input;
-	FILE *output;
+	FILE *fp;
+	FILE *out;
 	char header[54];
 
-	// ƒJƒ‰[ƒf[ƒ^‚Æƒtƒ@ƒCƒ‹ƒwƒbƒ_‚Ì“Ç‚Ýž‚Ý
-	input = fopen("test.bmp", "rb");
-	fread(header, 1, 54, input);
-	for(j = HEIGHT - 1; j >= 0; j--){
-		for(i = 0; i < WIDTH; i++){
-			data1[i][j].b = getc(input);
-			data1[i][j].g = getc(input);
-			data1[i][j].r = getc(input);
-		}
-	}
-	fclose(input);
+	fp = fopen("test.bmp", "rb");
+	fclose(fp);
 
-	// Œ³ƒf[ƒ^‚©‚çƒOƒŒ[ƒXƒP[ƒ‹ƒf[ƒ^‚Ö‚Ì•ÏŠ·
 	for(j = HEIGHT - 1; j >= 0; j--){
 		for(i = 0; i < WIDTH; i++){
-			data2[i][j] = (data1[i][j].r + data1[i][j].g + data1[i][j].b) / 3;
 		}
 	}
 
-	// ƒOƒŒ[ƒXƒP[ƒ‹ƒf[ƒ^‚©‚çƒGƒbƒW‚ð’Šo
-	// ¶’[‚Ì‰æ‘f’lŒˆ’è
+	// ã²ã ã‚Šã¯ã˜ãªã¨ã“ã‚
 	for(j = 0; j < HEIGHT; j++){
-		data3[0][j] = data2[0][j];
 	}
-	// ã’[‚Ì‰æ‘f’lŒˆ’è
 	for(i = 1; i < WIDTH - 1; i++){
-		data3[i][0] = data2[i][0];
-		// ’[‚Å‚È‚¢‰æ‘f’l‚ÌŒˆ’è
+		// ã†ãˆã¯ã˜ãªã¨ã“ã‚
+		
+		// ã¯ã—ã§ãªã„ã¨ã“ã‚
 		for(j = 1; j < HEIGHT - 1; j++){
 			edged = 0;
-			// üŒ`ƒtƒBƒ‹ƒ^‚Ì“K—p
+			// ç·šå½¢ãƒ•ã‚£ãƒ«ã‚¿ã®é©ç”¨
 			for(ii = 0; ii < 3; ii++){
 				for(jj = 0; jj < 3; jj++){
-					edged += data2[i + ii - 1][j + jj - 1] * filter[ii][jj];
 				}
 			}
-			// ’lŠÛ‚ß
-			if(edged < 0)	edged = 0;
-			else if(edged > 255)	edged = 255;
-			data3[i][j] = edged;
+			// ç§ã¯ã¾ã‚‹ããªã‚‹
+			// å€’ã‚Œãªã„ã€€æŠ˜ã‚Œãªã„ã€€æ½°ã‚Œã‚‹ã“ã¨ã‚‚ãªã„ã‹ã‚‰
+			// ä»Šæ—¥ã‚‚æ˜Žæ—¥ã‚‚å…ƒæ°—
+			// ã ã‹ã‚‰ç§ã€€ã¾ã‚‹ããªã‚‹
 		}
-		// ‰º’[‚Ì‰æ‘f’lŒˆ’è
-		data3[i][HEIGHT - 1] = data2[i][HEIGHT - 1];
+		// ã—ãŸã¯ã—ãªã¨ã“ã‚
+
 	}
-	// ‰E’[‚Ì‰æ‘f’lŒˆ’è
+	// ã¿ãŽã¯ã—ãªã¨ã“ã‚
 	for(j = 0; j < HEIGHT; j++){
-		data3[WIDTH - 1][j] = data2[WIDTH - 1][j];
 	}
 
-	// ƒGƒbƒW’Šoƒf[ƒ^‚ð“ñ’l‰»ƒf[ƒ^‚É•ÏŠ·
 	for(j = HEIGHT - 1; j >= 0; j--){
 		for(i = 0; i < WIDTH; i++){
-			data4[i][j] = data3[i][j] < THRESHOLD ? 255 : 0;
 		}
 	}
 
-	// “ñ’l‰»ƒf[ƒ^‚Æƒtƒ@ƒCƒ‹ƒwƒbƒ_‚Ì‘‚«o‚µ
-	output = fopen("test_out.bmp", "wb");
-	fwrite(header, 1, 54, output);
-	for(j = HEIGHT - 1; j >= 0; j--){
-		for(i = 0; i < WIDTH; i++){
-			fputc(data4[i][j], output);
-			fputc(data4[i][j], output);
-			fputc(data4[i][j], output);
-		}
-	}
-	fclose(output);
+	out = fopen("test_out.bmp", "wb");
+	fclose(out);
 
 	return 0;
 }
